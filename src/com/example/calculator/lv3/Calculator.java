@@ -1,9 +1,9 @@
-package com.example.calculator.lv2;
+package com.example.calculator.lv3;
+
 
 public class Calculator {    //값 계산하는 클래스
-    private char operator;
     private int num1, num2;
-
+    private char operator;
 
     // 생성자 초기화
     public Calculator() {
@@ -33,38 +33,30 @@ public class Calculator {    //값 계산하는 클래스
         }
     }
 
-    public char getOperator() {
-        return operator;
-    }
-
     public void setOperator(char operator) {    // 연산자 설정
-        if (!(operator == '+' || operator == '-' || operator == '/' || operator == 'x')) {
-            throw new IllegalArgumentException("알맞은 연산자를 입력해주세요.");
-        }
-        this.operator = operator;
+        OperatorType validOperator = OperatorType.inspectOperator(operator);
+        this.operator = validOperator.getOperator();
     }
 
     //연산하기
     public Number calculate() {
         switch (operator) {
             case '+':
-                return num1 + num2;
+                return OperatorType.PLUS.calculate(num1, num2);
             case '-':
-                return num1 - num2;
+                return OperatorType.MINUS.calculate(num1, num2);
             case 'x':
-                return num1 * num2;
+                return OperatorType.TIMES.calculate(num1, num2);
             case '/':
-                if (num2 == 0) {
-                    throw new ArithmeticException("0으로 나눌 수 없습니다.");
-                }
-                return num1 / (double) num2;
+                return OperatorType.DIVISION.calculate(num1, num2);
             default:
                 throw new IllegalArgumentException("알맞은 연산자가 아닙니다.");
         }
-
     }
 
     public String getCalculation() {
         return String.format("%d %c %d = %s", num1, operator, num2, calculate());
     }
+
+
 }
