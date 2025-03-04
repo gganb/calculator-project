@@ -6,11 +6,6 @@ import java.util.List;
 public class CalculationHistory {
     private List<String> calculatorHistory = new ArrayList<>();
 
-
-    public List<String> getCalculatorHistory() {
-        return calculatorHistory;
-    }
-
     public void saveHistory(String history) {
         calculatorHistory.add(history);
     }   //기록 저장하기
@@ -25,11 +20,12 @@ public class CalculationHistory {
         }
     }
 
-    public void clearHistory() {    //저장 기록 삭제하기
+    public void removeHistory() {    //저장 기록 삭제하기
         if (calculatorHistory.isEmpty()) {  //기록이 비워져있을 때
             System.out.println("계산 기록이 없습니다.");
         } else {
-            System.out.println(calculatorHistory.get(calculatorHistory.size() - 1));  //삭제할 기록 출력
+            String removed = calculatorHistory.remove(calculatorHistory.size() - 1);  //삭제할 기록 출력
+            System.out.println(removed);
             System.out.println("삭제되었습니다.");
             calculatorHistory.remove(calculatorHistory.size() - 1);   //마지막 인덱스 삭제
         }
