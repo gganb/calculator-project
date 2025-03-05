@@ -33,12 +33,13 @@ public class Calculator<T extends Number> {    //값 계산하는 클래스
     public OperatorType getOperator() {
         return operator;
     }
-//enum 내의 각 연산자로 값 전달하는 메서드
+
+    //enum 내의 각 연산자로 값 전달하는 메서드
     public Number calculate() {
         double result = operator.apply(num1.doubleValue(), num2.doubleValue()); //double 형태로 전달
-        result = Double.parseDouble(String.format("%.2f", result)); // 소수점 둘째자리까지 출력
+        result = Double.parseDouble(String.format("%.3f", result)); // 소수점 둘째자리까지 출력
         if (num1 instanceof Integer && num2 instanceof Integer) {
-            return Integer.valueOf((int) result);    // Integer 반환
+            return (int) result;    // Integer 반환
         } else {
             return result;  // Double 반환
         }
