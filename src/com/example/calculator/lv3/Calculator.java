@@ -1,12 +1,18 @@
 package com.example.calculator.lv3;
 
 
+import static com.example.calculator.lv3.OperatorType.PLUS;
+
 public class Calculator {    //값 계산하는 클래스
-    private int num1, num2;
+    private int num1;
+    private int num2;
     private char operator;
+    // private final Apply apply;
+
 
     // 생성자 초기화
     public Calculator() {
+
     }
 
     // 숫자,연산자 getter & setter
@@ -14,23 +20,16 @@ public class Calculator {    //값 계산하는 클래스
         return num1;
     }
 
-    public void setNum1(int num1) { // 양수 외의 값으로 변경할 수 없음
-        if (num1 < 0) {
-            throw new RuntimeException("양의 정수를 입력해주세요"); //예외 발생
-        }
-        this.num1 = num1;   // 0을 포함하는 양수일 경우 값 변경
+    public void setNum1(int num1) {
+        this.num1 = num1;
     }
 
     public int getNum2() {
         return num2;
     }
 
-    public void setNum2(int num2) { // 양수 외의 값으로 변경할 수 없음
-        if (num2 < 0) {
-            throw new RuntimeException("양의 정수를 입력해주세요"); //예외 발생
-        } else {
-            this.num2 = num2;  // 0을 포함하는 양수일 경우 값 변경
-        }
+    public void setNum2(int num2) {
+        this.num2 = num2;
     }
 
     public void setOperator(char operator) {    // 연산자 설정
@@ -38,24 +37,35 @@ public class Calculator {    //값 계산하는 클래스
         this.operator = validOperator.getOperator();
     }
 
+    public char getOperator() {
+        return this.operator;
+    }
     //연산하기
-    public Number calculate() {
-        switch (operator) {
-            case '+':
-                return OperatorType.PLUS.calculate(num1, num2);
-            case '-':
-                return OperatorType.MINUS.calculate(num1, num2);
-            case 'x':
-                return OperatorType.TIMES.calculate(num1, num2);
-            case '/':
-                return OperatorType.DIVISION.calculate(num1, num2);
+//    public T calculate(T a, T b) { //추상 메서드와 연결
+//        return apply.apply(a, b);
+//    }
+
+    public double calculate(int num1, int num2) {
+        OperatorType operatorType = OperatorType.inspectOperator(operator);
+        switch (operatorType) {
+            case PLUS:
+                return num1 + num2;
+            case MINUS:
+                return num1 - num2;
+            case TIMES:
+                return num1 * num2;
+            case DIVISION:
+                if (num2 == 0) {
+                    throw new ArithmeticException("0으로 나눌 수 없습니다");
+                }
+                return (double) num1 / num2;
             default:
                 throw new IllegalArgumentException("알맞은 연산자가 아닙니다.");
         }
     }
 
     public String getCalculation() {
-        return String.format("%d %c %d = %s", num1, operator, num2, calculate());
+        return String.format("%d %c %d = %s", num1, operator, num2, calculate(num1, num2));
     }
 
 
