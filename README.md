@@ -43,7 +43,7 @@ Java를 활용하여 **사칙연산 계산기**를 구현하는 프로젝트입�
  ![스크린샷 2025-03-06 152839](https://github.com/user-attachments/assets/aadf47cc-aa0b-4530-a0fb-91b086f02a97)
 </details>
 
-### 2️⃣ 연산 결과 저장
+### 2️⃣ 연산 결과 저장, 삭제
 
 이전 연산 결과를 `List<String>` 형태로 저장하여 히스토리를 관리합니다.
 
@@ -72,8 +72,8 @@ Java를 활용하여 **사칙연산 계산기**를 구현하는 프로젝트입�
 잘못된 입력, 0으로 나누기 등의 예외 상황을 처리합니다.
 
 <details><summary>
-
 </summary>
+ 
  ![image](https://github.com/user-attachments/assets/460ca985-f682-4533-a059-f7f22f4912af)
 </details>
 
