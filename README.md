@@ -35,31 +35,42 @@ Java를 활용하여 **사칙연산 계산기**를 구현하는 프로젝트입�
 ### 1️⃣ 사칙연산 수행
 
 사용자가 입력한 두 개의 숫자와 연산자를 활용하여 계산을 수행합니다.
+
 <details><summary>
  
 </summary>
 
  ![스크린샷 2025-03-06 152839](https://github.com/user-attachments/assets/aadf47cc-aa0b-4530-a0fb-91b086f02a97)
 </details>
+
 ### 2️⃣ 연산 결과 저장
 
 이전 연산 결과를 `List<String>` 형태로 저장하여 히스토리를 관리합니다.
+
 <details><summary>
 </summary>
+ 
 ![image](https://github.com/user-attachments/assets/3136b4b7-b8d7-4679-8bbd-cdb5ad590062)
+
 ![image](https://github.com/user-attachments/assets/ddac5a0d-a958-470a-843c-8f14c492d9b2)
 
 </details>
+
 ### 3️⃣ 특정 값보다 큰 결과 찾기
 
 사용자가 특정 기준값을 입력하면, 기존 연산 결과 중 더 큰 값을 필터링하여 출력합니다.
+
 <details><summary>
 </summary>
+ 
 ![image](https://github.com/user-attachments/assets/d8b4e943-a7cc-4f54-b460-1faf467e32d0)
+
 </details>
+
 ### 4️⃣ 예외 처리
 
 잘못된 입력, 0으로 나누기 등의 예외 상황을 처리합니다.
+
 <details><summary>
 
 </summary>
